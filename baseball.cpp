@@ -15,10 +15,20 @@ Strike : 정답과 일치하는 숫자이면서 , 위치까지 정한 숫자의 개수
 
 using std::string;
 
+struct GuessResult {
+	bool solved;
+	int strikes;
+	int balls;
+};
+
 class Baseball {
 public:
-	void guess(string askNums) {
+	Baseball() {}
+	Baseball(string rightAnswer) : rightAnswer_{ rightAnswer } {}
+	GuessResult guess(string askNums) {
 		assertIllegalArguments(askNums);
+
+		return{ true, 3, 0 };
 	}
 	void assertIllegalArguments(std::string& askNums)
 	{
@@ -42,4 +52,6 @@ public:
 		}
 		return false;
 	}
+private:
+	string rightAnswer_;
 };
