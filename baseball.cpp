@@ -28,7 +28,8 @@ public:
 	GuessResult guess(string askNums) {
 		assertIllegalArguments(askNums);
 
-		return{ true, 3, 0 };
+		if(askNums == rightAnswer_)
+			return{ true, 3, 0 };
 	}
 	void assertIllegalArguments(std::string& askNums)
 	{
@@ -44,13 +45,10 @@ public:
 	}
 	bool isHavingSameNumber(std::string& askNums)
 	{
-		if (askNums[0] == askNums[1]
+		return (askNums[0] == askNums[1]
 			|| askNums[0] == askNums[2]
 			|| askNums[1] == askNums[2]
-			) {
-			return true;
-		}
-		return false;
+			);
 	}
 private:
 	string rightAnswer_;
