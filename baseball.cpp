@@ -24,5 +24,12 @@ public:
 			if (letter < '0' || letter > '9')
 				throw std::invalid_argument("Must be numeric");
 		}
+
+		if (askNums[0] == askNums[1]
+			|| askNums[0] == askNums[2]
+			|| askNums[1] == askNums[2]
+			) {
+			throw std::invalid_argument("Must not be same number");
+		}
 	}
 };
