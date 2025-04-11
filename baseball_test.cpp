@@ -3,14 +3,24 @@
 
 #include <stdexcept>
 
-TEST(BaseballTS, TC1) {
+class BaseballFixture : public ::testing::Test {
+public:
 	Baseball game;
-	EXPECT_THROW(game.guess(string("12")), std::length_error);
-}
 
-TEST(BaseballTS, TC2) {
-	Baseball game;
-	EXPECT_THROW(game.guess(string("12s")), std::invalid_argument);
+	void assertIllegalArgument(string arg) {
+		try {
+			game.guess(arg);
+			FAIL();
+		}
+		catch (std::exception& e) {
+			//PASS
+		}
+	}
+};
+
+TEST_F(BaseballFixture, TC1) {
+	assertIllegalArgument("12");
+	assertIllegalArgument("12s");
 }
 
 int main() {

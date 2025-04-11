@@ -17,10 +17,10 @@ using std::string;
 
 class Baseball {
 public:
-	void guess(string ask) {
-		if (ask.length() != 3)
+	void guess(string askNums) {
+		if (askNums.length() != 3)
 			throw std::length_error("Must be three letters!");
-		for (auto letter : ask) {
+		for (auto letter : askNums) {
 			if (letter < '0' || letter > '9')
 				throw std::invalid_argument("Must be numeric");
 		}
