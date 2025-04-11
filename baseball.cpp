@@ -29,9 +29,9 @@ public:
 		assertIllegalArguments(askNums);
 
 		if(askNums == rightAnswer_)
-			return{ true, 3, 0 };
+			return { true, 3, 0 };
 
-		GuessResult result;
+		GuessResult result = { false, 0, 0 };
 		result.strikes = countStrike(askNums);
 		result.balls = countSame(askNums) - result.strikes;
 		result.solved = false;
@@ -50,6 +50,7 @@ public:
 		for (int i = 0; i < 3; ++i)
 			for (int j = 0; j < 3; ++j)
 				if (askNums[i] == rightAnswer_[j]) countSame++;
+		
 		return countSame;
 	}
 
