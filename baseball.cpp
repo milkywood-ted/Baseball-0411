@@ -18,7 +18,7 @@ using std::string;
 class Baseball {
 public:
 	void guess(string ask) {
-		if (ask.length() < 3)
+		if (ask.length() != 3)
 			throw std::length_error("Must be three letters!");
 	}
 };
