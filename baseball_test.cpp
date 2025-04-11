@@ -32,6 +32,15 @@ TEST_F(BaseballFixture, TC2) {
 	EXPECT_EQ(0, result.balls);
 }
 
+//2 strikes, 0 ball
+TEST_F(BaseballFixture, TC3) {
+	GuessResult result = game.guess("023");
+
+	EXPECT_FALSE(result.solved);
+	EXPECT_EQ(2, result.strikes);
+	EXPECT_EQ(0, result.balls);
+}
+
 int main() {
 	::testing::InitGoogleMock();
 	return RUN_ALL_TESTS();

@@ -30,7 +30,29 @@ public:
 
 		if(askNums == rightAnswer_)
 			return{ true, 3, 0 };
+
+		GuessResult result;
+		result.strikes = countStrike(askNums);
+		result.balls = countSame(askNums) - result.strikes;
+		result.solved = false;
+
+		return result;
 	}
+
+	int countStrike(string askNums) {
+		int countSame = 0;
+		for (int i = 0; i < 3; ++i)
+			if (askNums[i] == rightAnswer_[i]) countSame++;
+		return countSame;
+	}
+	int countSame(string askNums) {
+		int countSame = 0;
+		for (int i = 0; i < 3; ++i)
+			for (int j = 0; j < 3; ++j)
+				if (askNums[i] == rightAnswer_[j]) countSame++;
+		return countSame;
+	}
+
 	void assertIllegalArguments(std::string& askNums)
 	{
 		if (askNums.length() != 3)
