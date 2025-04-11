@@ -1,9 +1,11 @@
 #include "gmock/gmock.h"
 #include "baseball.cpp"
 
+#include <stdexcept>
+
 TEST(BaseballTS, TC1) {
-	Baseball baseBall;
-	EXPECT_EQ(1, 1);
+	Baseball game;
+	EXPECT_THROW(game.guess(string("12")), std::length_error);
 }
 
 int main() {
