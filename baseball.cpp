@@ -31,12 +31,8 @@ public:
 		if(askNums == rightAnswer_)
 			return { true, 3, 0 };
 
-		GuessResult result = { false, 0, 0 };
-		result.strikes = countStrike(askNums);
-		result.balls = countSame(askNums) - result.strikes;
-		result.solved = false;
-
-		return result;
+		int strikes = countStrike(askNums);
+		return { false, strikes, countSame(askNums) - strikes };
 	}
 
 	int countStrike(string askNums) {
